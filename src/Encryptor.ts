@@ -80,11 +80,11 @@ export function encrypt(
   }
 }
 
-export const decrypt = <T = unknown>(
+export function decrypt<T = unknown>(
   secret: string,
   data: string | Buffer,
   opts?: { algorithm?: string; },
-): T => {
+): T {
   const options = {
     algorithm: ALGORITHM,
     ...(opts || {}),
@@ -101,4 +101,4 @@ export const decrypt = <T = unknown>(
   } catch (error) {
     throw Error(`Unable to decrypt message: ${error.message}`);
   }
-};
+}

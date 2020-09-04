@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import 'mocha';
 
-import { encrypt, decrypt } from '../dist';
+import { encrypt, decrypt } from '../src';
 
 // TODO
 describe('Testing Encryptions', async () => {
@@ -10,7 +10,7 @@ describe('Testing Encryptions', async () => {
     message: 'This is an very important message',
   };
 
-  it('Encrypting and decrypting a message using same secret key', async () => {
+  it('Should encrypt and decrypt a message using same secret key', async () => {
     // Encrypting
     const encrypted = encrypt(secret, obj);
 
@@ -21,8 +21,8 @@ describe('Testing Encryptions', async () => {
     expect(obj.message).to.equal(result.message);
   });
 
-  it('Encrypting and decrypting a message using a different secret key', async () => {
-    const secret2 = 'secret!';
+  it('Should throw an error decrypting a message using a different secret key', async () => {
+    const secret2 = 'wrong-secret';
 
     // Encrypting
     const encrypted = encrypt(secret, obj);
@@ -51,9 +51,9 @@ describe('Testing Encryptions', async () => {
     expect(encrypt(secret, obj, { salt: '1234' })).to.equal(encrypt(secret, obj, { salt: '1234' }));
 
     expect(
-      encrypt(secret, obj, { algorithm: 'aes-256-cbc', salt: '12345' })
+      encrypt(secret, obj, { algorithm: 'aes-256-cbc', salt: '12345' }),
     ).not.to.equal(
-      encrypt(secret, obj, { algorithm: 'aes-128-cbc', salt: '12345' })
+      encrypt(secret, obj, { algorithm: 'aes-128-cbc', salt: '12345' }),
     );
   });
 

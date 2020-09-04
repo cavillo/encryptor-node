@@ -27,7 +27,7 @@ function encrypt(secret, data, opts) {
     }
 }
 exports.encrypt = encrypt;
-exports.decrypt = (secret, data, opts) => {
+function decrypt(secret, data, opts) {
     const options = Object.assign({ algorithm: ALGORITHM }, (opts || {}));
     try {
         const decipher = crypto_1.default.createDecipher(options.algorithm, secret);
@@ -41,5 +41,6 @@ exports.decrypt = (secret, data, opts) => {
     catch (error) {
         throw Error(`Unable to decrypt message: ${error.message}`);
     }
-};
+}
+exports.decrypt = decrypt;
 //# sourceMappingURL=Encryptor.js.map

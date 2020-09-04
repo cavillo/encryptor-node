@@ -11,6 +11,6 @@ export declare function encrypt(secret: string, data: unknown, opts?: {
     saltLength?: number;
     stringify?: true;
 }): string;
-export declare const decrypt: <T = unknown>(secret: string, data: string | Buffer, opts?: {
-    algorithm?: string | undefined;
-} | undefined) => T;
+export declare function decrypt<T = unknown>(secret: string, data: string | Buffer, opts?: {
+    algorithm?: string;
+}): T;
