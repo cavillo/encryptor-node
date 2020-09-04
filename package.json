@@ -1,7 +1,7 @@
 {
   "name": "encryptor-node",
   "version": "1.0.0",
-  "description": "Library to encrypt and decrypt messages using a secret key.",
+  "description": "Library for encrypting and decrypting messages using a secret key.",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
